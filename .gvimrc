@@ -1,17 +1,17 @@
 
 set showtabline=2            " タブを常に表示
-set imdisable                " IME OFF
 set guioptions-=T            " ツールバー非表示
-set antialias                " アンチエイリアス
 set visualbell t_vb=         " ビープ音なし
 
-set rop=type:directx
-set columns=240              " 横幅
+set columns=120              " 横幅
 set lines=60                 " 行数
 
+" カラースキーマ
+colorscheme molokai
+
 " フォント設定
-set guifontwide=Ricty_Diminished:h11
-set guifont=Ricty_Diminished:h11
+set guifontwide=Ricty_Diminished:h12
+set guifont=Ricty_Diminished:h12
 
 " ノーマルモードではセミコロンをコロンに。
 nnoremap ; :

@@ -86,7 +86,7 @@ NeoBundle 'croaker/mustang-vim'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'tomasr/molokai'
 
-NeoBundleLocal ~/.vim/.bundle/manual
+NeoBundleLocal ~/.vim/bundle/manual
 
 " You can specify revision/branch/tag.
 NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
