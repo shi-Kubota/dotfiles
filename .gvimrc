@@ -1,5 +1,6 @@
 
-set showtabline=2            " タブを常に表示
+set showtabline=1            " 2つ以上タブページがある場合に表示
+set guioptions-=m            " メニューバー非表示
 set guioptions-=T            " ツールバー非表示
 set visualbell t_vb=         " ビープ音なし
 
