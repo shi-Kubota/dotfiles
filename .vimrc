@@ -70,10 +70,13 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/vimproc'
 NeoBundle 'tpope/vim-fugitive'          "Git wrapper Plugin
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'vim-scripts/taglist.vim'
 NeoBundle 'szw/vim-tags'
 NeoBundle 'scrooloose/syntastic'
@@ -116,7 +119,7 @@ set display=uhex            " 表示できない文字を16進数で表示
 set scrolloff=5             " 常にカーソル位置から5行余裕を取る
 set virtualedit=block       " 矩形選択でカーソル位置の制限を解除
 set autoread                " 他でファイルが編集された時に自動で読み込む
-set background=dark
+""set background=dark
 
 set tabstop=2               " タブサイズ
 set shiftwidth=2            " インデント幅
@@ -133,7 +136,7 @@ autocmd InsertLeave * highlight StatusLine ctermfg=145 guifg=#c2bfa5 guibg=#0000
 autocmd InsertEnter * highlight StatusLine ctermfg=12 guifg=#1E90FF
 
 " カラースキーマ
-colorscheme molokai	
+colorscheme molokai
 if &term =~ "xterm-256color" || "screen-256color"
   set t_Co=256
   set t_Sf=[3%dm
@@ -164,10 +167,6 @@ set hlsearch
 set ignorecase
 set smartcase
 set wrapscan
-nohlsearch "reset highlight
-nnoremap <silent> [space]/ :noh<CR>
-map * <Plug>(visualstar-*)N
-map # <Plug>(visualstar-#)N
 
 " 入力補完
 inoremap { {}<LEFT>
@@ -192,40 +191,8 @@ let g:airline#extensions#whitespace#enabled = 0
 
 " <<< End vim-airline -------------------------------------
 
-" >>> NERDTree --------------------------------------------
-
-"let NERDTreeShowHidden = 1   "不可視ファイル表示
-
-" 引数なしで実行したとき、NERDTreeを実行する
-let file_name = expand("%:p")
-if has('vim_starting') && file_name == ""
-  autocmd VimEnter * call ExecuteNERDTree()
-endif
-
-" カーソルが外れているときは自動的にnerdtreeを隠す
-function! ExecuteNERDTree()
-"b:nerdstatus = 1 : NERDTree 表示中
-"b:nerdstatus = 2 : NERDTree 非表示中
-
-  if !exists('g:nerdstatus')
-    execute 'NERDTree ./'
-    let g:windowWidth = winwidth(winnr())
-    let g:nerdtreebuf = bufnr('')
-    let g:nerdstatus = 1
-
-  elseif g:nerdstatus == 1
-    execute 'wincmd t'
-    execute 'vertical resize' 0
-    execute 'wincmd p'
-    let g:nerdstatus = 2
-    elseif g:nerdstatus == 2
-    execute 'wincmd t'
-    execute 'vertical resize' g:windowWidth
-    let g:nerdstatus = 1
-
-  endif
-endfunction
-noremap <c-e> :<c-u>:call ExecuteNERDTree()<cr>
-
-" <<< End NERDTree ----------------------------------------
+" >>> vimfiler --------------------------------------------
+let g:vimfiler_as_default_explorer = 1
+noremap <c-e> VimFiler -split -simple -winwidth=35 -no-quit
+" <<< End vimfiler ----------------------------------------
 
