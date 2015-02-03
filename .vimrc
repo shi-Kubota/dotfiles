@@ -168,6 +168,9 @@ set ignorecase
 set smartcase
 set wrapscan
 
+" 置換
+nnoremap <C-h> :%s/<C-r>//
+
 " 入力補完
 inoremap { {}<LEFT>
 inoremap [ []<LEFT>
@@ -193,6 +196,6 @@ let g:airline#extensions#whitespace#enabled = 0
 
 " >>> vimfiler --------------------------------------------
 let g:vimfiler_as_default_explorer = 1
-noremap <c-e> VimFiler -split -simple -winwidth=35 -no-quit
+noremap <C-e> :VimFiler -split -simple -winwidth=35 -no-quit<CR>
 " <<< End vimfiler ----------------------------------------
 
