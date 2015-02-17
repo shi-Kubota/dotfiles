@@ -47,7 +47,6 @@ if has('iconv')
   unlet s:enc_jis
 endif
 
-" <<< End 文字コード, 改行コード --------------------------
 
 " >>> Neobundle Settings. ---------------------------------
 filetype plugin indent off
@@ -73,16 +72,14 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'tpope/vim-fugitive'          "Git wrapper Plugin
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'vim-scripts/taglist.vim'
-NeoBundle 'szw/vim-tags'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'derekwyatt/vim-scala'
+NeoBundle 'davidhalter/jedi-vim.git'
+NeoBundle 'nathanaelkane/vim-indent-guides.git'
 " colorscheme
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'croaker/mustang-vim'
@@ -103,7 +100,6 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
-" <<< End Neobundle Settings. -----------------------------
 
 " >>> Basic Settings. -------------------------------------
 set laststatus=2
@@ -184,18 +180,22 @@ vnoremap ( "zdi^V(<C-R>z)<ESC>
 vnoremap " "zdi^V"<C-R>z^V"<ESC>
 vnoremap ' "zdi'<C-R>z'<ESC>
 
-" 保存時に行末の空白を削除
-autocmd BufWritePre * :%s/ *$//
+" 行末の空白を削除
+nnoremap <C-t> :%s/ *$//<CR>
 
-" <<< End Basic Settings. -------------------------------------
 
 " >>> vim-airline -----------------------------------------
 let g:airline#extensions#whitespace#enabled = 0
 
-" <<< End vim-airline -------------------------------------
 
 " >>> vimfiler --------------------------------------------
 let g:vimfiler_as_default_explorer = 1
 noremap <C-e> :VimFiler -split -simple -winwidth=35 -no-quit<CR>
-" <<< End vimfiler ----------------------------------------
+
+
+" >>>  vim-indent-guides ----------------------------------
+let g:indent_guides_auto_colors=1
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
 

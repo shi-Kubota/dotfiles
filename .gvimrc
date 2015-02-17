@@ -7,6 +7,8 @@ set visualbell t_vb=         " ビープ音なし
 set columns=120              " 横幅
 set lines=60                 " 行数
 
+set background=dark
+
 " カラースキーマ
 colorscheme molokai
 
@@ -16,10 +18,6 @@ set guifont=Ricty_Diminished:h12
 
 " ノーマルモードではセミコロンをコロンに。
 nnoremap ; :
-
-" タブ切り替え
-nmap <Tab> gt
-nmap <S-Tab> gT
 
 " >>> 日本語入力 ------------------------------------------
 
@@ -33,6 +31,4 @@ inoremap <silent> <Esc> <Esc>
 inoremap <silent> <C-[> <Esc>
 " 「日本語入力固定モード」切り替えキー
 inoremap <silent> <C-j> <C-^>
-
-" <<< End 日本語入力 --------------------------------------
 
