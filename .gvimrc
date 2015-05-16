@@ -4,7 +4,7 @@ set guioptions-=m            " メニューバー非表示
 set guioptions-=T            " ツールバー非表示
 set visualbell t_vb=         " ビープ音なし
 
-set columns=120              " 横幅
+set columns=160              " 横幅
 set lines=60                 " 行数
 
 set background=dark

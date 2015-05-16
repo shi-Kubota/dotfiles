@@ -2,7 +2,7 @@
 
 " >>> 文字コード, 改行コード ------------------------------
 set encoding=utf-8
-set fileencodings=ucs_bom,utf8,ucs-2le,ucs-2
+set fileencodings=cp932,ucs_bom,utf8,ucs-2le,ucs-2
 set fileformats=unix,dos,mac
 
 " 文字コードの自動認識
@@ -46,7 +46,14 @@ if has('iconv')
   unlet s:enc_euc
   unlet s:enc_jis
 endif
-
+if has('autocmd')
+  function! AU_ReCheck_FENC()
+    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
+      let &fileencoding=&encoding
+    endif
+  endfunction
+  autocmd BufReadPost * call AU_ReCheck_FENC()
+endif
 
 " >>> Neobundle Settings. ---------------------------------
 filetype plugin indent off
@@ -173,7 +180,6 @@ inoremap [ []<LEFT>
 inoremap ( ()<LEFT>
 inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
-inoremap < <><LEFT>
 vnoremap { "zdi^V{<C-R>z}<ESC>
 vnoremap [ "zdi^V[<C-R>z]<ESC>
 vnoremap ( "zdi^V(<C-R>z)<ESC>
@@ -181,7 +187,7 @@ vnoremap " "zdi^V"<C-R>z^V"<ESC>
 vnoremap ' "zdi'<C-R>z'<ESC>
 
 " 行末の空白を削除
-nnoremap <C-t> :%s/ *$//<CR>
+nnoremap <C-t> :%s/ *$//<CR>:noh<CR>
 
 
 " >>> vim-airline -----------------------------------------
